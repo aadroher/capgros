@@ -6,8 +6,8 @@ module Capgros.Title (mkHeader) where
 import RIO
 import qualified RIO.Text as T
 
-witdh :: Int
-witdh = 60
+width :: Int
+width = 60
 
 commentPrefix :: Text
 commentPrefix = "/*"
@@ -19,7 +19,7 @@ paddingChar :: Char
 paddingChar = ' '
 
 internalBoxWidth :: Int
-internalBoxWidth = witdh - (T.length commentPrefix + T.length commentSuffix)
+internalBoxWidth = width - (T.length commentPrefix + T.length commentSuffix)
 
 titleLine :: Text -> Text
 titleLine title = commentPrefix <> T.center internalBoxWidth paddingChar title <> commentSuffix
