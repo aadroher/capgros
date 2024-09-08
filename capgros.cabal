@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Capgros.Title
+      Capgros.Util
       Import
       Run
       Types
@@ -63,6 +64,7 @@ test-suite capgros-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Capgros.UtilSpec
       UtilSpec
       Paths_capgros
   autogen-modules:
