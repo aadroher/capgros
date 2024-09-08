@@ -7,7 +7,7 @@ import RIO
 import qualified RIO.Text as T
 
 width :: Int
-width = 60
+width = 80
 
 commentPrefix :: Text
 commentPrefix = "/*"

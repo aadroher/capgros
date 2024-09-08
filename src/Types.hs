@@ -10,8 +10,9 @@ import RIO
 import RIO.Process
 
 -- | Command line arguments
-newtype Options = Options
-  { optionsTitle :: String
+data Options = Options
+  { optionsTitle :: !String,
+    optionsVerbose :: !Bool
   }
 
 data App = App

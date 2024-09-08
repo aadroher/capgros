@@ -7,6 +7,11 @@ import Options.Applicative
 import RIO.Process
 import Run
 
+verbosityOption :: Parser Bool
+verbosityOption =
+  switch
+    (long "verbose" <> short 'v' <> help "Enable verbose mode")
+
 titleOption :: Parser String
 titleOption =
   strOption
@@ -17,7 +22,7 @@ titleOption =
     )
 
 optionsParser :: Parser Options
-optionsParser = Options <$> titleOption
+optionsParser = Options <$> titleOption <*> verbosityOption
 
 optionsParserInfo :: ParserInfo Options
 optionsParserInfo =
@@ -31,7 +36,7 @@ optionsParserInfo =
 main :: IO ()
 main = do
   options <- execParser optionsParserInfo
-  lo <- logOptionsHandle stderr True
+  lo <- logOptionsHandle stderr $ optionsVerbose options
   pc <- mkDefaultProcessContext
   withLogFunc lo $ \lf ->
     let app =
