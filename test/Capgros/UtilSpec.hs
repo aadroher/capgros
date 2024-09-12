@@ -12,7 +12,14 @@ spec :: Spec
 spec = do
   describe "breakTitleLines" $ do
     describe "when width is 10" $ do
-      let width = 10
+      let width = 15
       describe "and the title is 'Application'" $ do
         let title = "Application"
-        it "returns a singleton with the whole title" $ breakTitleLines width title `shouldBe` [title]
+        it "returns a singleton with the whole title"
+          $ breakTitleLines width title
+          `shouldBe` [title]
+      describe "and the title is 'No need to argue anymore'" $ do
+        let title = "No need to argue anymore"
+        it "returns a two-element list with the two words"
+          $ breakTitleLines width title
+          `shouldBe` ["No need to", "argue anymore"]
